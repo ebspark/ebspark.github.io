@@ -69,7 +69,7 @@ body {
     text-align: center;
     line-height: 2;
     font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
-    background-color: #030b12;
+    background-color: #070615;
     color: white;
 }
 
@@ -112,8 +112,7 @@ h1 {
 
 .navbar {
     display: flex;
-    justify-content: center;
-    margin: 50px;
+    width: 100%;
 
     div {
         border: none;
@@ -158,7 +157,7 @@ h1 {
 
 .navDiv:active {
     .button-line {
-        background-color: rgb(40, 94, 43)!important;
+        background-color: rgb(40, 94, 43) !important;
     }
 }
 
@@ -168,18 +167,25 @@ h1 {
 }
 
 #time {
-    background-color: #ffffff3c;
+    font-family: monospace;
+    background-color: #ffffff46;
     font-weight: bold;
+    padding-inline: 2px;
+    border-radius: 3px;
 }
 
 .github-card {
     cursor: pointer;
     width: 100%;
     height: 125px;
-    box-shadow: rgba(255, 252, 252, 0.16) 0px 4px 4px 3px;
     flex-wrap: wrap-reverse;
     border-radius: 10px;
-    background-color: #0d1117;
+    background: radial-gradient(circle,
+            rgb(8, 9, 48) 0%,
+            rgb(4, 4, 23) 100%
+            /*radial-gradient( circle, rgb(15, 16, 61) 0%, rgb(8, 8, 29) 100% );*/
+        );
+    border: solid #08092f 3px;
     transition: transform 1s ease;
     display: flex;
     flex-direction: column;
