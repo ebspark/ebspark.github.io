@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function setAge() {
         const today = new Date();
-        const birthDate = new Date("2006-09-22");
+        const birthDate = new Date("2001-01-12");
 
         let age = today.getFullYear() - birthDate.getFullYear();
         const monthDifference = today.getMonth() - birthDate.getMonth();
