@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
     async function generateCards() {
         if (hasGeneratedCards) return;
 
-        const githubResponse = await fetch("https://api.github.com/users/EB25Ball/repos");
+        const githubResponse = await fetch("https://api.github.com/users/ebspark/repos");
         const githubData = await githubResponse.json();
 
         githubData.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
