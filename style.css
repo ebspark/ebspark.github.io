@@ -13,7 +13,11 @@
     --color-caution: #f85149;
     --color-important: #a371f7;
 }
-
+*, *::before, *::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
 .to-top {
     background: none;
     border: none;
@@ -126,6 +130,7 @@ h1 {
         margin-inline: 10px;
         align-items: center;
         justify-content: center;
+
         .nav-div-background{
             width: 95%;
             height: 100%;
@@ -202,7 +207,7 @@ footer {
     cursor: pointer;
     width: 100%;
     height: 125px;
-    flex-wrap: wrap-reverse;
+    flex-direction: column;
     border-radius: 10px;
     background: radial-gradient(circle,
             rgb(8, 9, 48) 0%,
@@ -212,7 +217,7 @@ footer {
     border: solid #08092f 3px;
     transition: transform 1s ease;
     display: flex;
-    flex-direction: column;
+
     position: relative;
 
     h5 {
@@ -220,9 +225,17 @@ footer {
     }
 
     .card-title {
-        margin-bottom: 10px;
+        line-height: normal;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        p{
+            float: right;
+        }
     }
-
+    .description{
+        display: flex;
+    }
     p {
         font-size: 13px;
         line-height: 1.25;
@@ -232,9 +245,6 @@ footer {
     }
 
     .creation-date {
-        position: absolute;
-        top: 0;
-        right: 0;
         margin: 15px;
     }
 
@@ -248,6 +258,7 @@ footer {
         margin-bottom: 10px;
         width: 90%;
         margin-inline-end: 15px;
+        margin-top: auto;
 
         svg {
             fill: white;

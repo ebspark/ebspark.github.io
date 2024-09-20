@@ -105,11 +105,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const cardElement = createElement(`
             <div class="github-card">
-                <h4 class="card-title">
-                    <a href="${repo.html_url}" target="_blank">${repo.name}</a>
-                </h4>
-                <p class="creation-date">${formattedDate}</p>
-                <p>${repo.description || 'No description available.'}</p>
+                <div class="card-title">
+                    <h4 >
+                        <a href="${repo.html_url}" target="_blank">${repo.name}</a>
+                    </h4>
+                    <p class="creation-date">${formattedDate}</p>
+                </div>
+                <p class="description">${repo.description || 'No description available.'}</p>
                 <section class="card-svg-list">
                     ${repo.fork ? `
                         <svg aria-hidden="true" height="16" viewBox="0 0 16 16" width="16">
