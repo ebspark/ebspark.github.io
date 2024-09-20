@@ -76,7 +76,7 @@ body {
 main {
     max-width: 850px;
     margin: auto;
-    height: 100vh;
+    height: fit-content;
 }
 
 main a {
@@ -160,7 +160,15 @@ h1 {
         background-color: rgb(40, 94, 43) !important;
     }
 }
-
+footer {
+    padding-bottom: 2.5rem;
+    padding-inline: 1.75rem;
+    margin: auto;
+    max-width: 65ch;
+    font-size: 1rem;
+    line-height: 1.75;
+    opacity: .5;
+}
 #time {
     font-family: monospace;
     background-color: #ffffff46;
