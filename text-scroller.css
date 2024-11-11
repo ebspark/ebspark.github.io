@@ -1,0 +1,84 @@
+
+.text-picker {
+    position: relative;
+    height: 140px;
+    overflow: hidden;
+    border-radius: 12px;
+    perspective: 1000px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.text-list {
+    height: 100%;
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding: 50px 0;
+    box-sizing: border-box;
+    transform-style: preserve-3d;
+    scroll-behavior: smooth;
+    position: relative;
+    z-index: 0;
+}
+
+.text-list::-webkit-scrollbar {
+    display: none;
+}
+
+.text-option {
+    margin: 16px 0;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 14px;
+    font-weight: 400;
+    transform-origin: center center;
+    position: relative;
+    height: 36px;
+    line-height: 36px;
+    transform: scale(0.7);
+    will-change: transform, color, font-size;
+    text-overflow: ellipsis;
+    padding: 0 20px;
+    white-space: nowrap;
+}
+
+.text-option.far {
+    color: rgba(255, 255, 255, 0.116);
+    font-size: 16px;
+    transform: scale(0.8);
+}
+
+.text-option.super-far {
+    color: rgba(255, 255, 255, 0.095);
+    font-size: 14px;
+    transform: scale(0.8);
+}
+
+.text-option.near {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 22px;
+    transform: scale(0.85) 
+}
+
+.text-option.nearer {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 28px;
+    text-shadow: 0 2px 8px rgba(255,255,255,0.1);
+    transform: scale(0.95);
+}
+
+.text-option.selected {
+    color: rgba(255, 255, 255, 1);
+    font-size: 32px;
+    font-weight: 500;
+    transform: scale(1);
+    text-shadow: 0 4px 12px rgba(255,255,255,0.2);
+}
+
+
+
+.input-area::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
