@@ -252,7 +252,7 @@ const pages = {
     'aboutme': `
         <section class="about-content" id="about-content">
             <h1>About Me</h1>
-                <p>Hi, I am <strong _title="aka EB Spark">Ethan B!</strong> I am a Web Developer & Programmer with 3 years of experience. I'm 18 y/o. I have a strong strive in computer programming and am eager to learn new skills. In my free time, I enjoy developing websites, creating games, and automating repetitive tasks to work more efficiently.
+                <p>Hi, I am <strong _title="aka EB Spark">Ethan B!</strong> I am a Web Developer & Programmer with 3 years of experience. I have a strong drive in computer programming and like to learn new skill sets. In my free time, I enjoy developing websites, creating games, and automating repetitive tasks to work more efficiently.
                 </p>
             <h2>Technical Skills</h2>
             <div class="skills-grid">
@@ -467,7 +467,7 @@ class Router {
     }
 
     loadInitialPage() {
-        const initialPage = window.location.hash.slice(1) || 'projects';
+        const initialPage = window.location.hash.slice(1) || 'aboutme';
         const initialIndex = this.getIndexForPage(initialPage);
         this.navigateToPage(initialPage);
 
