@@ -664,6 +664,28 @@ body {
     line-height: 1.8;
     color: var(--text-secondary);
     margin-bottom: 2rem;
+ 
+        a {
+            color: var(--accent-color); /* Use your accent color variable */
+            text-decoration: none; /* Remove default underline */
+            border-bottom: 0.5px dashed white; /* Dashed underline with white color */
+        }
+        
+        a:hover {
+            color: var(--accent-color); /* Keep the same color or change if needed */
+            border-bottom: 0.5px solid white; /* Change to solid underline on hover */
+        }
+        
+        a:active {
+            color: var(--accent-color);
+            border-bottom: 0.5px dashed var(--accent-color); /* Accent color underline on click */
+        }
+        
+        a:visited {
+            color: var(--accent-color); /* Keep visited links the same color */
+        }
+        
+
 }
 
 .about-content strong {

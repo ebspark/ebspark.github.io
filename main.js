@@ -253,6 +253,13 @@ const pages = {
         <section class="about-content" id="about-content">
             <h1>About Me</h1>
                 <p>Hi, I am <strong _title="aka EB Spark">Ethan B!</strong> I am a Web Developer & Programmer with 3 years of experience. I have a strong drive in computer programming and like to learn new skill sets. In my free time, I enjoy developing websites, creating games, and automating repetitive tasks to work more efficiently.
+                <br>
+                                <br>
+
+                For a while now I have been helping other developers with tools and coding. I have been enjoying messing around with api's and a bit of white hack hacking. Coding for the most part of the last year or 2  I have made tools for <a href="https://grabvr.quest" target="_blank">GRAB</a>, a vr game, which I also got to do some api white hat hacking for too! 
+                <br>
+                <br>
+                I am apart of my highschools robotics team in the coding aspect of the robot and I help build it. I have experience with use the Rasbery Pi's, pid motor controls, different sensors and controller controls. Robotics has given me some experience with Java as well as that was my first time encountering Java. 
                 </p>
             <h2>Technical Skills</h2>
             <div class="skills-grid">
