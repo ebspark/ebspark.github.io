@@ -256,10 +256,10 @@ const pages = {
                 <br>
                                 <br>
 
-                For a while now I have been helping other developers with tools and coding. I have been enjoying messing around with api's and a bit of white hack hacking. Coding for the most part of the last year or 2  I helped make tools for <a href="https://grabvr.quest" target="_blank">GRAB</a>, a vr game, which I also got to do some api white hat hacking for too! 
+                For a while now I have been helping other developers with tools and coding. I have been enjoying messing around with api's and a bit of white hack hacking. Coding for the most part of the last year or 2 I helped make tools for <a href="https://grabvr.quest" target="_blank">GRAB</a>, a vr game, which I also got to do some api white hat hacking for too! 
                 <br>
                 <br>
-                I am apart of my highschools robotics team in the coding aspect of the robot and I help build it. I have experience with use the Rasbery Pi's, pid motor controls, different sensors and controller controls. Robotics has given me some experience with Java as well as that was my first time encountering Java. 
+                I am apart of my highschools robotics coding team for the robot and I help build it. I have experience with using the Rasbery Pi, pid motor controls, different sensors and controller controls. Our robot code is mainly written in Java, thus I have gained most of my experience with Java through Robotics. 
                 </p>
             <h2>Technical Skills</h2>
             <div class="skills-grid">
