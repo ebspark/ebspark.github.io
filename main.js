@@ -114,7 +114,7 @@ const pages = {
             <p>
                 <strong>Development Experience:</strong><br>
                 My recent public work focuses on building specialized tools for the <a href="https://grabvr.quest" target="_blank">GrabVR</a> community. 
-                Working with SlinDev, I engineered the "Player-Editor," a <strong>Three.js</strong> environment that allows for real-time manipulation of player models and JSON API data. Priorly I made the GRABVR's player viewer feature which allows you to see a player's character model and preview customizable 'outfits'. 
+                Working with SlinDev, I engineered the "Player-Editor," a <strong>Three.js</strong> environment that allows for real-time manipulation of player models and JSON API data. Prior to this, I made the GRABVR's player viewer feature which allows you to see a player's character model and preview customizable 'outfits'. 
                 Additionally, I developed <code>model2grab</code>, a utility that reverse-engineers and converts standard 3D mesh data into game-compatible formats.
                 I worked with the community to help make tools and resources for the GrabVR modding community.
             </p>
