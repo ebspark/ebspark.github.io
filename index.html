@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,8 @@
     <link rel="icon" href="favicon.png" type="image/png">
 
     <meta name="description" content="My Portfolio Website | View my projects | About me - Contact me">
-    <meta name="keywords"content="EBSpark, Ethan B, EB Spark, web development, programming tools, coding resources, developer, GitHub portfolio, Discord profile, web developer, EBSpark tools, developer community">
+    <meta name="keywords"
+        content="EBSpark, Ethan B, EB Spark, web development, programming tools, coding resources, developer, GitHub portfolio, Discord profile, web developer, EBSpark tools, developer community">
     <meta name="author" content="EBSpark">
 
     <meta property="og:title" content="EB Spark - Home Page">
@@ -28,7 +30,7 @@
     <meta name="twitter:image" content="favicon.png">
     <meta name="twitter:url" content="https://ebspark.github.io">
 
-    
+
     <script>(function (w, d, s, l, i) {
             w[l] = w[l] || []; w[l].push({
                 'gtm.start':
@@ -37,7 +39,7 @@
                 j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
                     'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
         })(window, document, 'script', 'dataLayer', 'GTM-58NL2S9M');</script>
-    
+
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="text-scroller.css">
 
@@ -47,29 +49,54 @@
 
     <aside class="sidebar">
         <header class="sidebar-header">
+            <div class="profile-header">
+                <div class="profile-avatar">E</div>
+                <div class="profile-info">
+                    <h1>Ethan B</h1>
+                    <p>Web Developer</p>
+                </div>
+            </div>
+            <!-- Restored Picker -->
             <div class="text-picker">
                 <div class="text-list"></div>
             </div>
         </header>
         <div class="search">
-            <input type="text" placeholder="Project Name">
+            <input type="text" placeholder="Search...">
         </div>
         <ul class="sidebar-menu">
-            <li><a href="#aboutme" data-index="1">About Me</a></li>
-            <li><a href="#projects"data-index="0">Projects</a></li>
-            <li><a href="#contactme"data-index="2">Contact</a></li>
-            <li><a href="#socials"data-index="3">Socials</a></li>
+            <li><a href="#aboutme" data-index="0">About Me</a></li>
+            <li><a href="#projects" data-index="1">Projects</a></li>
+            <li><a href="#contactme" data-index="2">Contact</a></li>
+            <li><a href="#socials" data-index="3">Socials</a></li>
         </ul>
     </aside>
 
     <header class="header">
         <div id="time-container">
-            <span class="time">+ GMT-5 <br />
-                <span id="time">12:00 AM </span>
-            </span>
+            <span class="time">GMT-5 <span id="time">12:00 AM</span></span>
         </div>
         <div class="header-options">
-            <button>Change Theme</button>
+            <button id="theme-toggle" aria-label="Toggle Theme">
+                <svg class="theme-icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="5" />
+                    <path d="M12 1v2" />
+                    <path d="M12 21v2" />
+                    <path d="M4.22 4.22l1.42 1.42" />
+                    <path d="M17.66 17.66l1.42 1.42" />
+                    <path d="M1 12h2" />
+                    <path d="M21 12h2" />
+                    <path d="M4.22 19.78l1.42-1.42" />
+                    <path d="M17.66 6.34l1.42-1.42" />
+                </svg>
+                <svg class="theme-icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" style="display:none;">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                </svg>
+            </button>
         </div>
     </header>
     <div class="container">

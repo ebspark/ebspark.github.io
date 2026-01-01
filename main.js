@@ -83,12 +83,12 @@ function highlightText(element, searchText) {
                     const span = document.createElement('span');
                     span.className = 'highlight';
                     span.textContent = part;
-                    
+
                     const computedFontSize = window.getComputedStyle(parent).fontSize;
                     span.style.fontSize = computedFontSize;
-                    
+
                     fragment.appendChild(span);
-                    
+
                 } else {
                     fragment.appendChild(document.createTextNode(part));
                 }
@@ -98,176 +98,47 @@ function highlightText(element, searchText) {
         }
     });
 }
-class Picker {
-    constructor() {
-        this.list = document.querySelector('.text-list');
-        this.selectedIndex = 0;
-        this.isUserScrolling = false;
-        this.lastScrollTime = 0;
-        this.init();
-    }
 
-    init() {
-        this.setPadding();
-        this.buildOptions();
-        this.scrollToSelected();
-        this.initializeEventListeners();
-    }
-
-    setPadding() {
-        const padding = document.querySelector('.text-picker').clientHeight / 2;
-        this.list.style.padding = `${padding}px 0`;
-    }
-
-    buildOptions() {
-        const options = ['Projects', 'About Me', 'Contact Me', 'Socials'];
-        this.list.innerHTML = options.map((text, index) =>
-            `<div class="text-option" data-index="${index}">${text}</div>`
-        ).join('');
-        this.selectedIndex = Math.min(this.selectedIndex, options.length - 1);
-        this.updateSelection();
-    }
-
-    initializeEventListeners() {
-        this.list.addEventListener('scroll', this.handleScroll.bind(this));
-        this.list.addEventListener('touchstart', () => this.isUserScrolling = true);
-        this.list.addEventListener('touchend', this.handleTouchEnd.bind(this));
-        this.list.addEventListener('click', this.handleClick.bind(this));
-        window.addEventListener('resize', () => this.setPadding());
-    }
-
-    handleScroll() {
-        this.lastScrollTime = Date.now();
-        requestAnimationFrame(() => this.updateSelection());
-        clearTimeout(this.scrollTimeout);
-        this.scrollTimeout = setTimeout(() => {
-            if (Date.now() - this.lastScrollTime >= 150 && !this.isUserScrolling) {
-                this.snapToClosest();
-            }
-        }, 150);
-    }
-
-    handleTouchEnd() {
-        this.isUserScrolling = false;
-        setTimeout(() => {
-            if (!this.isUserScrolling) this.snapToClosest();
-        }, 150);
-    }
-
-    handleClick(e) {
-        const option = e.target.closest('.text-option');
-        if (option) {
-            this.selectedIndex = parseInt(option.dataset.index);
-            this.scrollToSelected();
-        }
-    }
-
-    updateSelection() {
-        const center = this.list.getBoundingClientRect().top + this.list.clientHeight / 2;
-        Array.from(this.list.children).forEach(option => {
-            const rect = option.getBoundingClientRect();
-            const distance = Math.abs(rect.top + rect.height / 2 - center);
-
-            option.className = 'text-option';
-            if (distance < 10) {
-                option.classList.add('selected');
-                this.selectedIndex = parseInt(option.dataset.index);
-            } else if (distance < 40) {
-                option.classList.add('nearer');
-            } else if (distance < 90) {
-                option.classList.add('near');
-            } else if (distance < 120) {
-                option.classList.add('far');
-            } else {
-                option.classList.add('super-far');
-            }
-        });
-    }
-
-    snapToClosest() {
-        const center = this.list.getBoundingClientRect().top + this.list.clientHeight / 2;
-        const closestOption = Array.from(this.list.children).reduce((closest, option) => {
-            const rect = option.getBoundingClientRect();
-            const distance = Math.abs(rect.top + rect.height / 2 - center);
-            return distance < closest.distance ? { element: option, distance } : closest;
-        }, { distance: Infinity }).element;
-
-        if (closestOption) {
-            this.selectedIndex = parseInt(closestOption.dataset.index);
-            const targetScroll = closestOption.offsetTop -
-                (this.list.clientHeight - closestOption.clientHeight) / 2;
-            this.smoothScrollTo(targetScroll);
-
-            if (window.router) {
-                const page = closestOption.textContent.toLowerCase().replace(/\s+/g, '');
-                if (window.router.currentPage !== page) {
-                    window.router.navigateToPage(page);
-                }
-            }
-        }
-    }
-
-    smoothScrollTo(targetScroll) {
-        this.isUserScrolling = true;
-        const startScroll = this.list.scrollTop;
-        const startTime = performance.now();
-        const duration = 400;
-
-        const animate = (currentTime) => {
-            const progress = Math.min((currentTime - startTime) / duration, 1);
-            const eased = this.easeInOutCubic(progress);
-            this.list.scrollTop = startScroll + (targetScroll - startScroll) * eased;
-
-            if (progress < 1) {
-                requestAnimationFrame(animate);
-            } else {
-                this.isUserScrolling = false;
-                this.updateSelection();
-            }
-        };
-
-        requestAnimationFrame(animate);
-    }
-
-    easeInOutCubic(t) {
-        return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-    }
-
-    scrollToSelected() {
-        const selectedOption = this.list.children[this.selectedIndex];
-        if (selectedOption) {
-            const targetScroll = selectedOption.offsetTop -
-                (this.list.clientHeight - selectedOption.clientHeight) / 2;
-            this.smoothScrollTo(targetScroll);
-        }
-    }
-}
 
 const pages = {
-    'projects': `
-      <section id="project-grid">
-      </section>
-    `,
 
     'aboutme': `
-        <section class="about-content" id="about-content">
+   <section class="about-content" id="about-content">
             <h1>About Me</h1>
-                <p>Hi, I am <strong _title="aka EB Spark">Ethan B!</strong> I am a Web Developer & Programmer with 3 years of experience. I have a strong drive in computer programming and like to learn new skill sets. In my free time, I enjoy developing websites, creating games, and automating repetitive tasks to work more efficiently.
-                <br>
-                                <br>
+            <p>
+                I am a <strong>Computer Science Undergraduate</strong> at Michigan State University (Class of 2029). 
+                My background is in full stack web development, my focus is changing to <strong>Artificial Intelligence</strong> and complex system architecture. 
+                I view software engineering as a logic puzzle, constantly seeking unique solutions to difficult computational problems.
+            </p>
+            <br>
+            <p>
+                <strong>Development Experience:</strong><br>
+                My recent public work focuses on building specialized tools for the <a href="https://grabvr.quest" target="_blank">GrabVR</a> community. 
+                Working with SlinDev, I engineered the "Player-Editor," a <strong>Three.js</strong> environment that allows for real-time manipulation of player models and JSON API data. Priorly I made the GRABVR's player viewer feature which allows you to see a player's character model and preview customizable 'outfits'. 
+                Additionally, I developed <code>model2grab</code>, a utility that reverse-engineers and converts standard 3D mesh data into game-compatible formats.
+                I worked with the community to help make tools and resources for the GrabVR modding community.
+            </p>
+            <br>
+            <p>
+                <strong>Current Research:</strong><br>
+                Beyond web tools, I am researching AI systems and algorithmic logic. 
+                I use Python and C++ to build private tools that test theoretical concepts, moving from standard application development to intelligent, adaptive software design.
+            </p>
 
-                For a while now I have been helping other developers with tools and coding. I have been enjoying messing around with api's and a bit of white hack hacking. Coding for the most part of the last year or 2 I helped make tools for <a href="https://grabvr.quest" target="_blank">GRAB</a>, a vr game, which I also got to do some api white hat hacking for too! 
-                <br>
-                <br>
-                I am apart of my highschools robotics coding team for the robot and I help build it. I have experience with using the Rasbery Pi, pid motor controls, different sensors and controller controls. Our robot code is mainly written in Java, thus I have gained most of my experience with Java through Robotics. 
-                </p>
             <h2>Technical Skills</h2>
             <div class="skills-grid">
             </div>
             <br/>
-            <small>This site was made with pure HTML, JavaScript, and CSS! No extra libraries!</small>
-
+            <small>This site was built with pure HTML, JavaScript, and CSS. No extra libraries.</small>
         </section>
+    `,
+    'projects': `
+      <section class="hero-section">
+          <h1>My Work</h1>
+          <p>A collection of projects exploring web development, game design, and automation.</p>
+      </section>
+      <section id="project-grid">
+      </section>
     `,
 
     'availability': `
@@ -417,11 +288,8 @@ class SkillsManager {
                     <div class="skill-icon">${skill.icon}</div>
                     <div class="skill-info">
                         <h3>${skill.name}</h3>
-                        <p>${skill.level} • ${skill.experience}</p>
+                        <p>${skill.experience}</p>
                     </div>
-                </div>
-                <div class="experience-bar">
-                    <div class="experience-fill" style="width: ${skill.proficiency}%"></div>
                 </div>
             </div>
         `;
@@ -436,7 +304,160 @@ class SkillsManager {
 }
 
 const skillsManager = new SkillsManager();
+
+class Picker {
+    constructor() {
+        this.list = document.querySelector('.text-list');
+        this.selectedIndex = 0;
+        this.isUserScrolling = false;
+        this.lastScrollTime = 0;
+        this.init();
+    }
+
+    init() {
+        if (!this.list) return; // Guard in case element missing
+        this.setPadding();
+        this.buildOptions();
+        this.scrollToSelected();
+        this.initializeEventListeners();
+    }
+
+    setPadding() {
+        if (!this.list) return;
+        const picker = document.querySelector('.text-picker');
+        if (picker) {
+            const padding = picker.clientHeight / 2;
+            this.list.style.padding = `${padding}px 0`;
+        }
+    }
+
+    buildOptions() {
+        const options = ['About Me', 'Projects', 'Contact Me', 'Socials'];
+        this.list.innerHTML = options.map((text, index) =>
+            `<div class="text-option" data-index="${index}">${text}</div>`
+        ).join('');
+        this.selectedIndex = Math.min(this.selectedIndex, options.length - 1);
+        this.updateSelection();
+    }
+
+    initializeEventListeners() {
+        this.list.addEventListener('scroll', this.handleScroll.bind(this));
+        this.list.addEventListener('touchstart', () => this.isUserScrolling = true);
+        this.list.addEventListener('touchend', this.handleTouchEnd.bind(this));
+        this.list.addEventListener('click', this.handleClick.bind(this));
+        window.addEventListener('resize', () => this.setPadding());
+    }
+
+    handleScroll() {
+        this.lastScrollTime = Date.now();
+        requestAnimationFrame(() => this.updateSelection());
+        clearTimeout(this.scrollTimeout);
+        this.scrollTimeout = setTimeout(() => {
+            if (Date.now() - this.lastScrollTime >= 50 && !this.isUserScrolling) {
+                this.snapToClosest();
+            }
+        }, 50);
+    }
+
+    handleTouchEnd() {
+        this.isUserScrolling = false;
+        setTimeout(() => {
+            if (!this.isUserScrolling) this.snapToClosest();
+        }, 150);
+    }
+
+    handleClick(e) {
+        const option = e.target.closest('.text-option');
+        if (option) {
+            this.selectedIndex = parseInt(option.dataset.index);
+            this.scrollToSelected();
+        }
+    }
+
+    updateSelection() {
+        if (!this.list) return;
+        const center = this.list.getBoundingClientRect().top + this.list.clientHeight / 2;
+        Array.from(this.list.children).forEach(option => {
+            const rect = option.getBoundingClientRect();
+            const distance = Math.abs(rect.top + rect.height / 2 - center);
+
+            option.className = 'text-option';
+            if (distance < 10) {
+                option.classList.add('selected');
+                this.selectedIndex = parseInt(option.dataset.index);
+            } else if (distance < 40) {
+                option.classList.add('nearer');
+            } else if (distance < 90) {
+                option.classList.add('near');
+            } else if (distance < 120) {
+                option.classList.add('far');
+            } else {
+                option.classList.add('super-far');
+            }
+        });
+    }
+
+    snapToClosest() {
+        const center = this.list.getBoundingClientRect().top + this.list.clientHeight / 2;
+        const closestOption = Array.from(this.list.children).reduce((closest, option) => {
+            const rect = option.getBoundingClientRect();
+            const distance = Math.abs(rect.top + rect.height / 2 - center);
+            return distance < closest.distance ? { element: option, distance } : closest;
+        }, { distance: Infinity }).element;
+
+        if (closestOption) {
+            this.selectedIndex = parseInt(closestOption.dataset.index);
+            const targetScroll = closestOption.offsetTop -
+                (this.list.clientHeight - closestOption.clientHeight) / 2;
+            this.smoothScrollTo(targetScroll);
+
+            if (window.router) {
+                const page = closestOption.textContent.toLowerCase().replace(/\s+/g, '');
+                if (window.router.currentPage !== page) {
+                    window.router.navigateToPage(page);
+                }
+            }
+        }
+    }
+
+    smoothScrollTo(targetScroll) {
+        this.isUserScrolling = true;
+        const startScroll = this.list.scrollTop;
+        const startTime = performance.now();
+        const duration = 200;
+
+        const animate = (currentTime) => {
+            const progress = Math.min((currentTime - startTime) / duration, 1);
+            const eased = this.easeInOutCubic(progress);
+            this.list.scrollTop = startScroll + (targetScroll - startScroll) * eased;
+
+            if (progress < 1) {
+                requestAnimationFrame(animate);
+            } else {
+                this.isUserScrolling = false;
+                this.updateSelection();
+            }
+        };
+
+        requestAnimationFrame(animate);
+    }
+
+    easeInOutCubic(t) {
+        return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+    }
+
+    scrollToSelected() {
+        const selectedOption = this.list.children[this.selectedIndex];
+        if (selectedOption) {
+            const targetScroll = selectedOption.offsetTop -
+                (this.list.clientHeight - selectedOption.clientHeight) / 2;
+            this.smoothScrollTo(targetScroll);
+        }
+    }
+}
+
 const picker = new Picker();
+
 class Router {
     constructor() {
         this.mainContent = document.querySelector('.main-content');
@@ -455,9 +476,11 @@ class Router {
                     const page = target.getAttribute('href')?.replace('#', '').toLowerCase().trim().replace(' ', '');
                     const index = parseInt(target.getAttribute('data-index'), 10);
                     this.navigateToPage(page);
-                    
-                    picker.selectedIndex = index;
-                    picker.scrollToSelected();
+
+                    if (picker && picker.list) {
+                        picker.selectedIndex = index;
+                        picker.scrollToSelected();
+                    }
                 }
             });
         });
@@ -465,12 +488,17 @@ class Router {
 
     loadInitialPage() {
         const initialPage = window.location.hash.slice(1) || 'aboutme';
-        const initialIndex = this.getIndexForPage(initialPage);
         this.navigateToPage(initialPage);
 
-        if (initialIndex !== -1) {
-            picker.selectedIndex = initialIndex;
-            picker.scrollToSelected();
+        // Set initial active state
+        const activeLink = document.querySelector(`.sidebar-menu a[href="#${initialPage}"]`);
+        if (activeLink) {
+            activeLink.classList.add('active');
+            const index = parseInt(activeLink.getAttribute('data-index'), 10);
+            if (picker && picker.list) {
+                picker.selectedIndex = index;
+                requestAnimationFrame(() => picker.scrollToSelected());
+            }
         }
     }
 
@@ -479,14 +507,23 @@ class Router {
             window.location.hash = page;
             this.mainContent.classList.add('fade-out');
             setTimeout(() => {
-                this.mainContent.innerHTML = pages[page]+ `    <footer>
+                this.mainContent.innerHTML = pages[page] + `    <footer>
         <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 2024-PRESENT © Ethan B
     </footer>`;
                 this.mainContent.classList.remove('fade-out');
                 this.currentPage = page;
+                this.updateActiveSidebarLink(page);
                 this.updateSearchPlaceholder(page);
                 this.handleSpecialPages(page);
             }, 300);
+        }
+    }
+
+    updateActiveSidebarLink(page) {
+        document.querySelectorAll('.sidebar-menu a').forEach(l => l.classList.remove('active'));
+        const activeLink = document.querySelector(`.sidebar-menu a[href="#${page}"]`);
+        if (activeLink) {
+            activeLink.classList.add('active');
         }
     }
 
